@@ -1,0 +1,1 @@
+To resolve a conflict, pull the changes in terminal and open the merge editor then fix and push it.
