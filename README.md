@@ -22,3 +22,5 @@ https://github.com/colbyj427/CS260-startup/blob/main/notes.md
 
 ## Mockup
     ![Drawing of main, recipe, pantry, and shopping list pages of the web program] (https://github.com/colbyj427/CS260-startup/blob/main/Assets/Images/recipeMockup.pdf)
+
+    ![Screenshot of a comment on a GitHub issue showing an image, added in the Markdown, of an Octocat smiling and raising a tentacle.](https://myoctocat.com/assets/images/base-octocat.svg)
