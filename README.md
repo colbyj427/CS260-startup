@@ -10,6 +10,13 @@ https://github.com/colbyj427/CS260-startup/blob/main/notes.md
     filter recipes so only those which you can make with your current ingredients are displayed. Recipes can also be used to
     add ingredients to your shopping list, so if you want to make a recipe, you can easily see what you need to buy.
 
+## Key Features
+    Create/Login to an account
+    Add Recipes
+    Add ingredients to pantry
+    Add ingredients to shopping list
+    Favorite recipes
+
 ## Technologies
     HTML - Uses HTML to structure pages. Home page, recipe pages, pantry and shopping list pages.
     CSS - style that is simple with a specific consistent color scheme.
