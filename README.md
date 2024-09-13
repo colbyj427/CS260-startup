@@ -21,4 +21,4 @@ https://github.com/colbyj427/CS260-startup/blob/main/notes.md
     WebSocket data: When a recipe is completed, it is shown on other users screens in real time.
 
 ## Mockup
-    ! [Drawing of main, recipe, pantry, and shopping list pages of the web program] (https://github.com/colbyj427/CS260-startup/blob/main/Assets/Images/recipeMockup.pdf)
+    ![Drawing of main, recipe, pantry, and shopping list pages of the web program] (https://github.com/colbyj427/CS260-startup/blob/main/Assets/Images/recipeMockup.pdf)
