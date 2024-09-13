@@ -5,7 +5,10 @@ notes.md:
 https://github.com/colbyj427/CS260-startup/blob/main/notes.md
 
 ## Pitch
-    I want to build a recipe web program that allows users to input, browse and favorite recipes. Users have access to a pantry which is a database containing all the ingredients they input as things they own. This pantry can be used to filter recipes so only those which you can make with your current ingredients are displayed. Recipes can also be used to add ingredients to your shopping list, so if you want to make a recipe, you can easily see what you need to buy.
+    I want to build a recipe web program that allows users to input, browse and favorite recipes. Users have access to a
+    pantry which is a database containing all the ingredients they input as things they own. This pantry can be used to 
+    filter recipes so only those which you can make with your current ingredients are displayed. Recipes can also be used to
+    add ingredients to your shopping list, so if you want to make a recipe, you can easily see what you need to buy.
 
 ## Technologies
     HTML - Uses HTML to structure pages. Home page, recipe pages, pantry and shopping list pages.
