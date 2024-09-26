@@ -30,3 +30,5 @@ https://github.com/colbyj427/CS260-startup/blob/main/notes.md
 ## Mockup
     ![Drawing of main, recipe, pantry, and shopping list pages of the web program] (https://github.com/colbyj427/CS260-startup/blob/main/Assets/Images/recipeMockup.pdf)
 
+## HTML deliverable
+    Added structure and placeholders for each technology item and key feature included in the writeup
