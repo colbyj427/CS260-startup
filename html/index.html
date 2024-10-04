@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
                 <div class="pageHeader">
                     <h1>Colbys Cookbook</h1>
@@ -21,43 +21,64 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="logIn.html">Log in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#recipes">Find Recipes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#pantry">Add Ingredients</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#shoppingList">Build Shopping List</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="logIn.html">Log in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#recipes">Find Recipes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#pantry">Add Ingredients</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#shoppingList">Build Shopping List</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
           </nav>
-        <h1>
-            <a class="btn btn-warning" href="https://github.com/colbyj427/CS260-startup" role="button">Github</a>
-        </h1>
-    </header>
+        </header>
     <main>
-        <div id="recipes" class="index-text">
-            <h2>Recipes</h2>
-            <p>Discover delicous recipes for every occasion!</p>
-        </div>
-        <div id="pantry" class="index-text">
-            <h2>Pantry</h2>
-            <p>View and add to your pantry.</p>
-        </div>
-        <div id="ShoppingList" class="index-text">
-            <h2>Shopping List</h2>
-            <p>Review and add to your shopping list.</p>
+        <div class="index-text">
+            <div id="recipes" class="container mt-5" class="recipes-text">
+                <div class="p-4 bg-light border rounded shadow-sm">
+                    <h2>Recipes</h2>
+                    <p>Discover delicous recipes for every occasion!</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis quam eget augue tincidunt pharetra. Sed tincidunt orci leo, nec consectetur arcu sodales eu. Nunc quis vulputate est. Duis convallis lacus turpis, sed tempus sem pellentesque et. Proin euismod, erat nec molestie aliquam, enim lectus hendrerit neque, eget imperdiet neque justo pellentesque lacus. Maecenas bibendum placerat libero, sed sagittis dolor congue vel. Nunc vestibulum at turpis id pellentesque. Nunc magna risus, malesuada ut molestie eget, iaculis at ante. Maecenas suscipit pulvinar eleifend. Maecenas luctus leo ac tincidunt pulvinar. Phasellus et risus tincidunt, sollicitudin nisi eu, porta mauris. Aliquam erat volutpat. Nullam imperdiet tellus vel dui tristique consequat non vitae eros.
+                    </p>
+                </div>
+            </div>
+            <div id="pantry" class="container mt-5" class="pantry-text">
+                <div class="p-4 bg-light border rounded shadow-sm">
+                    <h2>Pantry</h2>
+                    <p>View and add to your pantry.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis quam eget augue tincidunt pharetra. Sed tincidunt orci leo, nec consectetur arcu sodales eu. Nunc quis vulputate est. Duis convallis lacus turpis, sed tempus sem pellentesque et. Proin euismod, erat nec molestie aliquam, enim lectus hendrerit neque, eget imperdiet neque justo pellentesque lacus. Maecenas bibendum placerat libero, sed sagittis dolor congue vel. Nunc vestibulum at turpis id pellentesque. Nunc magna risus, malesuada ut molestie eget, iaculis at ante. Maecenas suscipit pulvinar eleifend. Maecenas luctus leo ac tincidunt pulvinar. Phasellus et risus tincidunt, sollicitudin nisi eu, porta mauris. Aliquam erat volutpat. Nullam imperdiet tellus vel dui tristique consequat non vitae eros.
+                    </p>
+                </div>
+            </div>
+            <div id="shoppingList" class="container mt-5" class="shopping-text">
+                <div class="p-4 bg-light border rounded shadow-sm">
+                    <h2>Shopping List</h2>
+                    <p>Review and add to your shopping list.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis quam eget augue tincidunt pharetra. Sed tincidunt orci leo, nec consectetur arcu sodales eu. Nunc quis vulputate est. Duis convallis lacus turpis, sed tempus sem pellentesque et. Proin euismod, erat nec molestie aliquam, enim lectus hendrerit neque, eget imperdiet neque justo pellentesque lacus. Maecenas bibendum placerat libero, sed sagittis dolor congue vel. Nunc vestibulum at turpis id pellentesque. Nunc magna risus, malesuada ut molestie eget, iaculis at ante. Maecenas suscipit pulvinar eleifend. Maecenas luctus leo ac tincidunt pulvinar. Phasellus et risus tincidunt, sollicitudin nisi eu, porta mauris. Aliquam erat volutpat. Nullam imperdiet tellus vel dui tristique consequat non vitae eros.
+                    </p>
+                </div>
+            </div>
         </div>
     </main>
     <footer>
-        <p>&copy; 2023 Recipe Website. All rights reserved.</p>
+        <div>
+            <a class="btn btn-warning" href="https://github.com/colbyj427/CS260-startup" role="button">Github</a>
+        </div>
+        <div>
+            <p>&copy; 2023 Recipe Website. All rights reserved.</p>
+        </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
+
 </html>
