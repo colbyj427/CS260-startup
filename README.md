@@ -32,3 +32,10 @@ https://github.com/colbyj427/CS260-startup/blob/main/notes.md
 
 ## HTML deliverable
     Added structure and placeholders for each technology item and key feature included in the writeup
+
+## CSS delverable
+    Added background colors and flex box sturcture to each page.
+    Stylized each link and nav bars for resizing.
+    added a create acccount and stylized both it and login page.
+    stylized all other html pages.
+    added and stylized buttons and text areas for entering items to recipes/pantry/shopping list.
