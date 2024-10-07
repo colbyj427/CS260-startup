@@ -6,6 +6,12 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;
+
+    background-image: url('/Assets/Images/recipes.jpg');
+    /* Control how the background behaves */
+    background-size: cover; /* Cover the entire element */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image from repeating */
 }
 .account-box {
     background-color: #fff;
