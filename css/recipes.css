@@ -1,9 +1,9 @@
-.add-content{
+.recipes-box{
     display: flex;
     flex-direction: column;
     background-color: blanchedalmond;
 }
-.add-box {
+.recipes-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
