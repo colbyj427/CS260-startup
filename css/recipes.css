@@ -1,15 +1,40 @@
-.recipes-box{
-    display: flex;
-    flex-direction: column;
-    background-color: blanchedalmond;
-}
-.recipes-box {
+.page-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5%;
+}
+.recipe-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.page-box {
+    padding: 2%;
+    margin: 1%;
     background-color: blanchedalmond;
+    background-clip: padding-box;
+    border-radius: 15px;
+    width:80%;
+}
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;;
+}
+.recipe-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.web-socket-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .add-and-remove {
     display: flex;

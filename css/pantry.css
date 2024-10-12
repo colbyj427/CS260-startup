@@ -2,6 +2,9 @@
     display: flex;
     flex-direction: column;
     background-color: blanchedalmond;
+    margin: 3%;
+    border-radius: 15px;
+    padding: 2%;
 }
 .add-box {
     display: flex;
