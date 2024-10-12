@@ -3,7 +3,8 @@
     flex-direction: column;
     background-color: blanchedalmond;
     margin: 3%;
-    border-radius: 15px;
+    border-radius: 15px; 
+    /* rounded corners */
     padding: 2%;
 }
 .add-box {
