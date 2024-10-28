@@ -1,0 +1,69 @@
+nav {
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+    background-color: blanchedalmond;
+}
+header {
+    width: 100%;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    background-color: blanchedalmond;
+}
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: bottom;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(255, 235, 205);
+    
+}
+p {
+    font-family: Arial, sans-serif;
+}
+.body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
+    background-color: lightgray;
+    height: 100vh;
+    margin: 0;
+
+    background-image: url('/Assets/Images/recipes.jpg');
+    /* Control how the background behaves */
+    background-size: cover; /* Cover the entire element */
+    background-position: center; /* Center the image */
+    background-repeat: repeat; /* Prevent image from repeating */
+}
+.index-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    background-color: blanchedalmond;
+}
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btn-warning {
+    background-color: #245aef;
+    border-color: #245aef;
+    color: white;
+}
+.database {
+    color:blue;
+}
+img {
+    width: 600px;
+    height: auto;
+}
