@@ -1,3 +1,10 @@
+/* main { */
+    /* background-image: url('../../public/recipes.jpg'); */
+    /* Control how the background behaves */
+    /* background-size: cover; Cover the entire element */
+    /* background-position: center; Center the image */
+    /* background-repeat: no-repeat; Prevent image from repeating */
+/* } */
 .add-content{
     display: flex;
     flex-direction: column;

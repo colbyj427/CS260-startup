@@ -62,6 +62,9 @@ export default function App() {
             <Route path='*' element={<NotFound />} />
         </Routes>
 
+    {/* <footer>
+        <p> </p>
+    </footer> */}
     </div>
     </BrowserRouter>
   );
