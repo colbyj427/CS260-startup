@@ -9,8 +9,13 @@ import { Pantry } from './pantry/pantry';
 import { Recipes } from './recipes/recipes';
 import { ShoppingList } from './shoppingList/shoppingList';
 import { CreateAccount } from './createAccount/createAccount';
+import { AuthState } from './login/authState'; // Assuming you have an AuthState file
 
 export default function App() {
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
+
   return ( 
     <BrowserRouter>
         <div>
@@ -26,19 +31,27 @@ export default function App() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            {authState === AuthState.Authenticated && (
                             <li className="nav-item">
                                 {/* <a class="nav-link" href="myHome.html">Home</a> */}
                                 <NavLink className='nav-link' to='myHome'>Home</NavLink>
                             </li>
+                            )}
+                            {authState === AuthState.Authenticated && (
                             <li className="nav-item">
                                 <NavLink className='nav-link' to='pantry'>Pantry</NavLink>
                             </li>
+                            )}
+                            {authState === AuthState.Authenticated && (
                             <li className="nav-item">
                                 <NavLink className='nav-link' to='recipes'>Recipes</NavLink>
                             </li>
+                            )}
+                            {authState === AuthState.Authenticated && (
                             <li className="nav-item">
                                 <NavLink className='nav-link' to='shoppingList'>Shopping List</NavLink>
                             </li>
+                            )}
                             <li className="nav-item">
                                 <NavLink className='nav-link' to='login'>Log in</NavLink>
                             </li>
@@ -53,6 +66,7 @@ export default function App() {
         </header>
 
         <Routes>
+            <Route path='/' element={<Login />} exact />
             <Route path='/login' element={<Login />} exact />
             <Route path='/myHome' element={<MyHome />} />
             <Route path='/pantry' element={<Pantry />} />
