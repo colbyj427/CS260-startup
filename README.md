@@ -39,3 +39,7 @@ https://github.com/colbyj427/CS260-startup/blob/main/notes.md
     added a create acccount and stylized both it and login page.
     stylized all other html pages.
     added and stylized buttons and text areas for entering items to recipes/pantry/shopping list.
+
+## React Deliverable
+    Added authentication so personal pages only show up after user logs in.
+    Put all html on same page to be rendered when user clicks a new page.
