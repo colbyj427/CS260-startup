@@ -33,3 +33,7 @@
 .login-container a:hover {
     text-decoration: underline;
 }
+.submitButtons {
+    display:flex;
+    flex-direction: row;
+}

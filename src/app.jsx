@@ -10,6 +10,8 @@ import { Recipes } from './recipes/recipes';
 import { ShoppingList } from './shoppingList/shoppingList';
 import { CreateAccount } from './createAccount/createAccount';
 import { AuthState } from './login/authState'; // Assuming you have an AuthState file
+import { Unauthenticated } from './login/unauthenticated';
+import { Authenticated } from './login/authenticated';
 
 export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -53,11 +55,11 @@ export default function App() {
                             </li>
                             )}
                             <li className="nav-item">
-                                <NavLink className='nav-link' to='login'>Log in</NavLink>
+                                <NavLink className='nav-link' to=''>Log in</NavLink>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <NavLink className='nav-link' to='createAccount'>Create Account</NavLink>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>
@@ -66,7 +68,14 @@ export default function App() {
         </header>
 
         <Routes>
-            <Route path='/' element={<Login />} exact />
+            <Route path='/' element={<Unauthenticated
+                userName={userName}
+                authState={authState}
+                onAuthChange={(userName, authState) => {
+                  setAuthState(authState);
+                  setUserName(userName);
+                }}
+              />} exact />
             <Route path='/login' element={<Login />} exact />
             <Route path='/myHome' element={<MyHome />} />
             <Route path='/pantry' element={<Pantry />} />

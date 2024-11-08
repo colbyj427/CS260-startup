@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 
-import './authenticated.css';
+import './login.css';
 
 export function Authenticated(props) {
   const navigate = useNavigate();

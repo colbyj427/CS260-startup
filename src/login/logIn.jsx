@@ -1,11 +1,11 @@
 import React from 'react';
 import './login.css';
 import { AuthState } from './authState';
-
+import { Unauthenticated } from './unauthenticated';
+import { Authenticated } from './authenticated';
 
 export function Login({ userName, authState, onAuthChange }) {
   return (
-
     <main>
       <div>
         {authState !== AuthState.Unknown && <h1>Welcome to Simon</h1>}
@@ -21,19 +21,7 @@ export function Login({ userName, authState, onAuthChange }) {
           />
         )}
       </div>
-    <main className='container-fluid text-center'>
-        <div className="login-container">
-            <h2>Login</h2>
-            <form action="myHome.html">
-                <input type="text" name="username" placeholder="Username" required/>
-                <input type="password" name="password" placeholder="Password" required/>
-                <input type="submit" value="Login"/>
-            </form>
-        </div>
-        <div>
-            <a class="btn btn-warning" href="https://github.com/colbyj427/CS260-startup" role="button">Github</a>
-        </div>
-    </main>
+    
     </main>
   );
 }
