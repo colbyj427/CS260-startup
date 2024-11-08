@@ -74,12 +74,12 @@ export function Unauthenticated(props) {
   return (
     <>
       <div>
+      <div className="login-container">
+        <h2>Login</h2>
         <div className='input-group mb-3'>
-          <span className='input-group-text'>@</span>
           <input className='form-control' type='text' value={userName} onChange={(e) => setUserName(e.target.value)} placeholder='your@email.com' />
         </div>
         <div className='input-group mb-3'>
-          <span className='input-group-text'>🔒</span>
           <input className='form-control' type='password' onChange={(e) => setPassword(e.target.value)} placeholder='password' />
         </div>
         <div class="submitButtons">
@@ -90,6 +90,10 @@ export function Unauthenticated(props) {
           Create
         </Button>
         </div>
+      </div>
+      </div>
+      <div>
+      <a class="btn btn-warning" href="https://github.com/colbyj427/CS260-startup" role="button">Github</a>
       </div>
 
       <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
