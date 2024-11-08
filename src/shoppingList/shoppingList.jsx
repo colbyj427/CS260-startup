@@ -11,11 +11,14 @@ export function ShoppingList() {
     const addItem = () => {
         if (input.trim() !== "") {
             setItems([...items, input]);
+            localStorage.setItem('ShoppingListItems', JSON.stringify([...items, input]));
             setInput('');
         }
     };
 
     const deleteItem = (index) => {
+        const updatedItems = items.filter((_, i) => i !== index);
+        localStorage.setItem('ShoppingListItems', JSON.stringify(updatedItems));
         setItems(items.filter((_, i) => i !== index));
     };
 

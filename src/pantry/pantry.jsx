@@ -11,11 +11,14 @@ export function Pantry() {
     const addItem = () => {
         if (input.trim() !== "") {
             setItems([...items, input]);
+            localStorage.setItem('pantryItems', JSON.stringify([...items, input]));
             setInput('');
         }
     };
 
     const deleteItem = (index) => {
+        const updatedItems = items.filter((_, i) => i !== index);
+        localStorage.setItem('pantryItems', JSON.stringify(updatedItems));
         setItems(items.filter((_, i) => i !== index));
     };
 

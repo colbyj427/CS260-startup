@@ -68,7 +68,7 @@ export default function App() {
         </header>
 
         <Routes>
-            <Route path='/' element={<Unauthenticated
+            <Route path='/' element={<Login
                 userName={userName}
                 authState={authState}
                 onAuthChange={(userName, authState) => {
