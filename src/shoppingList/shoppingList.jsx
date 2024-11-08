@@ -8,6 +8,13 @@ export function ShoppingList() {
     const [items, setItems] = useState([]);
     const [input, setInput] = useState('');
 
+    React.useEffect(() => {
+        const itemsText = localStorage.getItem('ShoppingListItems');
+        if (itemsText) {
+          setItems(JSON.parse(itemsText));
+        }
+      }, []);
+
     const addItem = () => {
         if (input.trim() !== "") {
             setItems([...items, input]);

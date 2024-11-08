@@ -5,6 +5,9 @@
     /* background-position: center; Center the image */
     /* background-repeat: no-repeat; Prevent image from repeating */
 /* } */
+body {
+    background-color: rgb(117, 117, 117);
+}
 .add-content{
     display: flex;
     flex-direction: column;

@@ -8,6 +8,13 @@ export function Pantry() {
     const [items, setItems] = useState([]);
     const [input, setInput] = useState('');
 
+    React.useEffect(() => {
+        const itemsText = localStorage.getItem('pantryItems');
+        if (itemsText) {
+          setItems(JSON.parse(itemsText));
+        }
+      }, []);
+
     const addItem = () => {
         if (input.trim() !== "") {
             setItems([...items, input]);

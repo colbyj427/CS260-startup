@@ -1,7 +1,22 @@
 import React from 'react';
 import './myHome.css';
+import { useEffect, useState } from 'react';
 
 export function MyHome() {
+    const [pantryItems, setPantryItems] = useState([]);
+    const [shoppingListItems, setShoppingListItems] = useState([]);
+
+    React.useEffect(() => {
+        const pantryItemsText = localStorage.getItem('pantryItems');
+        if (pantryItemsText) {
+          setPantryItems(JSON.parse(pantryItemsText));
+        }
+        const shoppingListItemsText = localStorage.getItem('ShoppingListItems');
+        if (shoppingListItemsText) {
+          setShoppingListItems(JSON.parse(shoppingListItemsText));
+        }
+      }, []);
+
   return (
     <main>
         <div class="home-boxes">
@@ -9,9 +24,11 @@ export function MyHome() {
                 <a href="pantry.html">Pantry</a>
                 <p>This will pull pantry data from the database</p>
                 <ul>
-                    <li>spaghetti</li>
-                    <li>onion</li>
-                    <li>cheddar cheese</li>
+                    {pantryItems.map((item, index) => (
+                        <li key={index}>
+                            {item} 
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div class="home-recipes home-box">
@@ -44,13 +61,20 @@ export function MyHome() {
             <div class="home-shopping-list home-box">
                 <a href="shoppingList.html">Shopping List</a>
                 <p>This will pull shopping data from the database</p>
-                <ul>
+                    <ul>
+                    {shoppingListItems.map((item, index) => (
+                        <li key={index}>
+                            {item} 
+                        </li>
+                    ))}
+                    </ul>
+                {/* <ul>
                     <li>apple</li>
                     <li>fettucine</li>
                     <li>alfredo sauce</li>
                     <li>bacon</li>
                     <li>frozen chicken breast</li>
-                </ul>
+                </ul> */}
             </div>
         </div>
     </main>
