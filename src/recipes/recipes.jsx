@@ -4,13 +4,39 @@ import './recipes.css';
 
 export function Recipes() {
     const [testData, setTestData] = React.useState('Before Button');
+    const [recipesMade, setRecipesMade] = React.useState(0);
+
+    function incrementRecipesMade() {
+        setRecipesMade(recipesMade + 1);
+    }
 
     function buttonpress() {
         console.log('Button pressed');
         console.log(testData);
         const usernameText = localStorage.getItem('userName');
         setTestData(`${usernameText} completed a recipe`);
+        incrementRecipesMade();
+        saveScore(recipesMade);
       }
+
+      async function saveScore(score) {
+        const date = new Date().toLocaleDateString();
+        const newScore = { name: userName, score: score, date: date };
+      
+        await fetch('/api/score', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(newScore),
+        });
+      }
+      
+      React.useEffect(() => {
+        fetch('/api/scores')
+          .then((response) => response.json())
+          .then((scores) => {
+            setRecipesMade(scores);
+          });
+      }, []);
 
   return (
     <main>
@@ -26,12 +52,14 @@ export function Recipes() {
             </div> */}
             <div class="recipe-header page-box">
                 <p>Populates a quote or something using web service</p>
+                <p>Recipes Made: { recipesMade }</p>
                 <p>Recipes come from a database</p>
             </div>
             <div class="recipe-box page-box">
                 <h3>Spaghetti</h3>
                 <p>Description of Recipe 1.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis quam eget augue tincidunt pharetra. Sed tincidunt orci leo, nec consectetur arcu sodales eu. Nunc quis vulputate est. Duis convallis lacus turpis, sed tempus sem pellentesque et. Proin euismod, erat nec molestie aliquam, enim lectus hendrerit neque, eget imperdiet neque justo pellentesque lacus. Maecenas bibendum placerat libero, sed sagittis dolor congue vel. Nunc vestibulum at turpis id pellentesque. Nunc magna risus, malesuada ut molestie eget, iaculis at ante. Maecenas suscipit pulvinar eleifend. Maecenas luctus leo ac tincidunt pulvinar. Phasellus et risus tincidunt, sollicitudin nisi eu, porta mauris. Aliquam erat volutpat. Nullam imperdiet tellus vel dui tristique consequat non vitae eros.</p>
+                Make 
                 <Button variant='primary' onClick={buttonpress}>Finished recipe (uses websocket to update others)</Button>
             </div>
             <div class="recipe-box page-box">

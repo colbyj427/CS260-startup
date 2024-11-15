@@ -8,9 +8,22 @@ import './login.css';
 export function Authenticated(props) {
   const navigate = useNavigate();
 
+  // function logout() {
+  //   localStorage.removeItem('userName');
+  //   props.onLogout();
+  // }
   function logout() {
-    localStorage.removeItem('userName');
-    props.onLogout();
+    console.log('Logging out');
+    fetch(`/api/auth/logout`, {
+      method: 'delete',
+    })
+      .catch(() => {
+        // Logout failed. Assuming offline
+      })
+      .finally(() => {
+        localStorage.removeItem('userName');
+        props.onLogout();
+      });
   }
 
   return (
