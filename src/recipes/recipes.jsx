@@ -6,6 +6,9 @@ export function Recipes() {
     const [testData, setTestData] = React.useState('Before Button');
     const [recipesMade, setRecipesMade] = React.useState({ score: 0 });
 
+    const [quote, setQuote] = React.useState('Loading...');
+    const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
+
     React.useEffect(() => {
         fetch('/api/scores')
             .then((response) => response.json())
@@ -21,6 +24,29 @@ export function Recipes() {
             score: prev.score + 1,
         }));
     }
+
+    React.useEffect(() => {
+        const random = Math.floor(Math.random() * 1000);
+        fetch(`https://picsum.photos/v2/list?page=${random}&limit=1`)
+          .then((response) => response.json())
+          .then((data) => {
+            const containerEl = document.querySelector('#picture');
+    
+            const width = containerEl.offsetWidth;
+            const height = containerEl.offsetHeight;
+            const apiUrl = `https://picsum.photos/id/${data[0].id}/${width}/${height}?grayscale`;
+            setImageUrl(apiUrl);
+          })
+          .catch();
+    
+        fetch('https://quote.cs260.click')
+          .then((response) => response.json())
+          .then((data) => {
+            setQuote(data.quote);
+            setQuoteAuthor(data.author);
+          })
+          .catch();
+      }, []);
 
     function buttonpress() {
         console.log('Button pressed');
@@ -53,6 +79,10 @@ export function Recipes() {
                     <p>Populates a quote or something using web service</p>
                     <p>Recipes Made: {recipesMade.score}</p>
                     <p>Recipes come from a database</p>
+                    <div className='quote-box'>
+                        <p className='quote'>{quote}</p>
+                        <p className='author'>{quoteAuthor}</p>
+                    </div>
                 </div>
                 <div className="recipe-box page-box">
                     <h3>Spaghetti</h3>
