@@ -1,13 +1,25 @@
 import React from 'react';
-import { Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap';
 import './recipes.css';
 
 export function Recipes() {
     const [testData, setTestData] = React.useState('Before Button');
-    const [recipesMade, setRecipesMade] = React.useState(0);
+    const [recipesMade, setRecipesMade] = React.useState({ score: 0 });
+
+    React.useEffect(() => {
+        fetch('/api/scores')
+            .then((response) => response.json())
+            .then((scores) => {
+                setRecipesMade(score); // Assuming API response is { score: <number> }
+            })
+            .catch((error) => console.error('Error fetching scores:', error));
+    }, []);
 
     function incrementRecipesMade() {
-        setRecipesMade(recipesMade + 1);
+        setRecipesMade((prev) => ({
+            ...prev,
+            score: prev.score + 1,
+        }));
     }
 
     function buttonpress() {
@@ -15,63 +27,53 @@ export function Recipes() {
         console.log(testData);
         const usernameText = localStorage.getItem('userName');
         setTestData(`${usernameText} completed a recipe`);
+        console.log(`buttonpress score: ${recipesMade.score}`);
         incrementRecipesMade();
-        saveScore(recipesMade);
-      }
+        saveScore(recipesMade.score);
+    }
 
-      async function saveScore(score) {
+    async function saveScore(score) {
+        console.log('Saving score');
         const date = new Date().toLocaleDateString();
-        const newScore = { name: userName, score: score, date: date };
-      
-        await fetch('/api/score', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify(newScore),
-        });
-      }
-      
-      React.useEffect(() => {
-        fetch('/api/scores')
-          .then((response) => response.json())
-          .then((scores) => {
-            setRecipesMade(scores);
-          });
-      }, []);
+        const newScore = { score, date };
+        console.log(score);
+        console.log(newScore);
 
-  return (
-    <main>
-        <div class="page-content">
-            {/* <div class="recipe-header page-box">
-                <h2>Recipes Made: ##</h2>
-                <p>updates using web service</p>
-                <div class="search-bar page-box">
-                    <input type="text" class="form-control" id="recipeSearch" placeholder="Search for recipes..."/>
-                    <button class="btn btn-primary" type="button" onclick="searchRecipes()">Search</button>
+        await fetch('/api/score', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newScore),
+        });
+    }
+
+    return (
+        <main>
+            <div className="page-content">
+                <div className="recipe-header page-box">
+                    <p>Populates a quote or something using web service</p>
+                    <p>Recipes Made: {recipesMade.score}</p>
+                    <p>Recipes come from a database</p>
                 </div>
-                <p>Recipes come from a database</p>
-            </div> */}
-            <div class="recipe-header page-box">
-                <p>Populates a quote or something using web service</p>
-                <p>Recipes Made: { recipesMade }</p>
-                <p>Recipes come from a database</p>
+                <div className="recipe-box page-box">
+                    <h3>Spaghetti</h3>
+                    <p>Description of Recipe 1.</p>
+                    Make
+                    <Button variant="primary" onClick={buttonpress}>
+                        Finished recipe (uses websocket to update others)
+                    </Button>
+                </div>
+                <div className="recipe-box page-box">
+                    <h3>Chicken Korma</h3>
+                    <p>Description of Recipe 2.</p>
+                    <Button variant="primary" onClick={buttonpress}>
+                        Finished recipe (uses websocket to update others)
+                    </Button>
+                </div>
+                <div className="web-socket-box page-box">
+                    <p>Box for alerts where websocket will show immediate updates.</p>
+                    <p>{testData}</p>
+                </div>
             </div>
-            <div class="recipe-box page-box">
-                <h3>Spaghetti</h3>
-                <p>Description of Recipe 1.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis quam eget augue tincidunt pharetra. Sed tincidunt orci leo, nec consectetur arcu sodales eu. Nunc quis vulputate est. Duis convallis lacus turpis, sed tempus sem pellentesque et. Proin euismod, erat nec molestie aliquam, enim lectus hendrerit neque, eget imperdiet neque justo pellentesque lacus. Maecenas bibendum placerat libero, sed sagittis dolor congue vel. Nunc vestibulum at turpis id pellentesque. Nunc magna risus, malesuada ut molestie eget, iaculis at ante. Maecenas suscipit pulvinar eleifend. Maecenas luctus leo ac tincidunt pulvinar. Phasellus et risus tincidunt, sollicitudin nisi eu, porta mauris. Aliquam erat volutpat. Nullam imperdiet tellus vel dui tristique consequat non vitae eros.</p>
-                Make 
-                <Button variant='primary' onClick={buttonpress}>Finished recipe (uses websocket to update others)</Button>
-            </div>
-            <div class="recipe-box page-box">
-                <h3>Chicken Korma</h3>
-                <p>Description of Recipe 2.</p>
-                <Button variant='primary' onClick={buttonpress}>Finished recipe (uses websocket to update others)</Button>
-            </div>
-            <div class="web-socket-box page-box">
-                <p>Box for alerts where websocket will show immediate updates.</p>
-                <p>{testData}</p>
-            </div>
-        </div>
-    </main>
-  );
+        </main>
+    );
 }

@@ -20,7 +20,7 @@ export default function App() {
 
   return ( 
     <BrowserRouter>
-        <div class="allContent">
+        <div className="allContent">
         <header>
         <nav className="navbar navbar-expand-lg">
             <div className="container-fluid">
