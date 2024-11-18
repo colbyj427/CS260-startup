@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const app = express();
 const uuid = require('uuid');
@@ -84,4 +85,8 @@ function updateScores(newScore, scores) {
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });

@@ -6,4 +6,17 @@ export default defineConfig({
       '/api': 'http://localhost:4000',
     },
   },
+  build: {
+    chunkSizeWarningLimit: 2000,
+    rollupOptions: {
+        // NODE_OPTIONS = --max-old-space-size=8192,
+      onwarn(warning, warn) {
+        if (warning.code === "MODULE_LEVEL_DIRECTIVE") {
+          return;
+        }
+        warn(warning);
+      },
+    },
+  },
+//   plugins: [react()],
 });
