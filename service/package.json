@@ -10,8 +10,11 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "path": "^0.12.7",
+    "db": "^6.0.3",
     "express": "^4.21.1",
+    "mongo": "^0.1.0",
+    "mongodb": "^6.10.0",
+    "path": "^0.12.7",
     "uuid": "^11.0.3"
   }
 }
