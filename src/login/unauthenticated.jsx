@@ -50,7 +50,7 @@ export function Unauthenticated(props) {
         <div className='input-group mb-3'>
           <input className='form-control' type='password' onChange={(e) => setPassword(e.target.value)} placeholder='password' />
         </div>
-        <div class="submitButtons">
+        <div className="submitButtons">
         <Button variant='primary' onClick={() => loginUser()} disabled={!userName || !password}>
           Login
         </Button>
@@ -61,7 +61,7 @@ export function Unauthenticated(props) {
       </div>
       </div>
       <div>
-      <a class="btn btn-warning" href="https://github.com/colbyj427/CS260-startup" role="button">Github</a>
+      <a className="btn btn-warning" href="https://github.com/colbyj427/CS260-startup" role="button">Github</a>
       </div>
 
       <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />

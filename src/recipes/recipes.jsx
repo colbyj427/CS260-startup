@@ -78,7 +78,6 @@ export function Recipes() {
                 <div className="recipe-header page-box">
                     <p>Populates a quote or something using web service</p>
                     <p>Recipes Made: {recipesMade.score}</p>
-                    <p>Recipes come from a database</p>
                     <div className='quote-box'>
                         <p className='quote'>{quote}</p>
                         <p className='author'>{quoteAuthor}</p>
