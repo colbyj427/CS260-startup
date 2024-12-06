@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import './recipes.css';
+import { RecipeEvent, RecipeNotifier } from './recipeNotifier';
 
 export function Recipes() {
     const [testData, setTestData] = React.useState('Before Button');
@@ -9,10 +10,24 @@ export function Recipes() {
     const [quote, setQuote] = React.useState('Loading...');
     const [quoteAuthor, setQuoteAuthor] = React.useState('unknown');
 
+    const [events, setEvent] = React.useState([]);
+
+    React.useEffect(() => {
+        RecipeNotifier.addHandler(handleRecipeEvent);
+    
+        return () => {
+          RecipeNotifier.removeHandler(handleRecipeEvent);
+        };
+      });    
+
+    function handleRecipeEvent(event) {
+        setEvent([...events, event]);
+        }
+
     React.useEffect(() => {
         fetch('/api/scores')
             .then((response) => response.json())
-            .then((scores) => {
+            .then((score) => {
                 setRecipesMade(score); // Assuming API response is { score: <number> }
             })
             .catch((error) => console.error('Error fetching scores:', error));
@@ -27,17 +42,17 @@ export function Recipes() {
 
     React.useEffect(() => {
         const random = Math.floor(Math.random() * 1000);
-        fetch(`https://picsum.photos/v2/list?page=${random}&limit=1`)
-          .then((response) => response.json())
-          .then((data) => {
-            const containerEl = document.querySelector('#picture');
+        // fetch(`https://picsum.photos/v2/list?page=${random}&limit=1`)
+        //   .then((response) => response.json())
+        //   .then((data) => {
+        //     const containerEl = document.querySelector('#picture');
     
-            const width = containerEl.offsetWidth;
-            const height = containerEl.offsetHeight;
-            const apiUrl = `https://picsum.photos/id/${data[0].id}/${width}/${height}?grayscale`;
-            setImageUrl(apiUrl);
-          })
-          .catch();
+        //     const width = containerEl.offsetWidth;
+        //     const height = containerEl.offsetHeight;
+        //     const apiUrl = `https://picsum.photos/id/${data[0].id}/${width}/${height}?grayscale`;
+        //     setImageUrl(apiUrl);
+        //   })
+        //   .catch();
     
         fetch('https://quote.cs260.click')
           .then((response) => response.json())
@@ -46,7 +61,43 @@ export function Recipes() {
             setQuoteAuthor(data.author);
           })
           .catch();
-      }, []);
+    }, []);
+    
+    function createMessageArray() {
+    const messageArray = [];
+    for (const [i, event] of events.entries()) {
+        let message = 'unknown';
+        if (event.type === RecipeEvent.End) {
+        message = `scored ${event.value.score}`;
+        } else if (event.type === RecipeEvent.Start) {
+        message = `started a new game`;
+        } else if (event.type === RecipeEvent.System) {
+        message = event.value.msg;
+        }
+
+        messageArray.push(
+        <div key={i} className='event'>
+            <span className={'player-event'}>{event.from.split('@')[0]}</span>
+            {message}
+        </div>
+        );
+    }
+    return messageArray;
+    }
+
+    async function saveScore(score) {
+        console.log('Saving score');
+        const date = new Date().toLocaleDateString();
+        const userName = localStorage.getItem('userName');
+        const newScore = { email: userName, score: score };
+        console.log(score);
+        console.log(newScore);
+        await fetch('/api/score', {
+            method: 'POST',
+            body: JSON.stringify(newScore),
+            headers: { 'content-type': 'application/json' },
+        });
+    }
 
     function buttonpress() {
         console.log('Button pressed');
@@ -54,22 +105,10 @@ export function Recipes() {
         const usernameText = localStorage.getItem('userName');
         setTestData(`${usernameText} completed a recipe`);
         console.log(`buttonpress score: ${recipesMade.score}`);
+        // Let other players know the user clicked the button
+        RecipeNotifier.broadcastEvent(usernameText, RecipeEvent.System, { msg: testData });
         incrementRecipesMade();
         saveScore(recipesMade.score);
-    }
-
-    async function saveScore(score) {
-        console.log('Saving score');
-        const date = new Date().toLocaleDateString();
-        const newScore = { score, date };
-        console.log(score);
-        console.log(newScore);
-
-        await fetch('/api/score', {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(newScore),
-        });
     }
 
     return (
@@ -100,6 +139,7 @@ export function Recipes() {
                 </div>
                 <div className="web-socket-box page-box">
                     <p>Box for alerts where websocket will show immediate updates.</p>
+                    {/* <p>{createMessageArray()}</p> */}
                     <p>{testData}</p>
                 </div>
             </div>

@@ -5,6 +5,8 @@ const app = express();
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 const DB = require('./database.js');
+const { peerProxy } = require('./peerProxy.js');
+
 
 const authCookieName = 'token';
 
@@ -20,24 +22,13 @@ app.use(express.static('public'));
 // Trust headers that are forwarded from the proxy so we can determine IP addresses
 app.set('trust proxy', true);
 
+
 let users = {};
 let scores = [];
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-// // CreateAuth a new user
-// apiRouter.post('/auth/create', async (req, res) => {
-//   const user = users[req.body.email];
-//   if (user) {
-//     res.status(409).send({ msg: 'Existing user' });
-//   } else {
-//     const user = { email: req.body.email, password: req.body.password, token: uuid.v4() };
-//     users[user.email] = user;
-
-//     res.send({ token: user.token });
-//   }
-// });
 // CreateAuth token for a new user
 apiRouter.post('/auth/create', async (req, res) => {
   if (await DB.getUser(req.body.email)) {
@@ -54,18 +45,6 @@ apiRouter.post('/auth/create', async (req, res) => {
   }
 });
 
-// // GetAuth login an existing user
-// apiRouter.post('/auth/login', async (req, res) => {
-//   const user = users[req.body.email];
-//   if (user) {
-//     if (req.body.password === user.password) {
-//       user.token = uuid.v4();
-//       res.send({ token: user.token });
-//       return;
-//     }
-//   }
-//   res.status(401).send({ msg: 'Unauthorized' });
-// });
 // GetAuth token for the provided credentials
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await DB.getUser(req.body.email);
@@ -79,14 +58,6 @@ apiRouter.post('/auth/login', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
-// DeleteAuth logout a user
-// apiRouter.delete('/auth/logout', (req, res) => {
-//   const user = Object.values(users).find((u) => u.token === req.body.token);
-//   if (user) {
-//     delete user.token;
-//   }
-//   res.status(204).end();
-// });
 // DeleteAuth token if stored in cookie
 apiRouter.delete('/auth/logout', (_req, res) => {
   res.clearCookie(authCookieName);
@@ -107,21 +78,12 @@ secureApiRouter.use(async (req, res, next) => {
   }
 });
 
-// // GetScores
-// apiRouter.get('/scores', (_req, res) => {
-//   res.send(scores);
-// });
 // GetScores
 secureApiRouter.get('/scores', async (req, res) => {
   const scores = await DB.getHighScores();
   res.send(scores);
 });
 
-// // SubmitScore
-// apiRouter.post('/score', (req, res) => {
-//   scores = updateScores(req.body, scores);
-//   res.send(scores);
-// });
 // SubmitScore
 secureApiRouter.post('/score', async (req, res) => {
   const score = { ...req.body, ip: req.ip };
@@ -129,28 +91,6 @@ secureApiRouter.post('/score', async (req, res) => {
   const scores = await DB.getHighScores();
   res.send(scores);
 });
-
-// updateScores considers a new score for inclusion in the high scores.
-// function updateScores(newScore, scores) {
-//   let found = false;
-//   for (const [i, prevScore] of scores.entries()) {
-//     if (newScore.score > prevScore.score) {
-//       scores.splice(i, 0, newScore);
-//       found = true;
-//       break;
-//     }
-//   }
-
-//   if (!found) {
-//     scores.push(newScore);
-//   }
-
-//   if (scores.length > 10) {
-//     scores.length = 10;
-//   }
-
-//   return scores;
-// }
 
 // Default error handler
 app.use(function (err, req, res, next) {
@@ -171,10 +111,12 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const httpService = app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
+
+peerProxy(httpService);

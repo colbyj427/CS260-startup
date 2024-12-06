@@ -40,9 +40,11 @@ function peerProxy(httpServer) {
     // Respond to pong messages by marking the connection alive
     ws.on('pong', () => {
       connection.alive = true;
+      console.log('Pong received');
     });
   });
 
+    
   // Keep active connections alive
   setInterval(() => {
     connections.forEach((c) => {
@@ -51,7 +53,7 @@ function peerProxy(httpServer) {
         c.ws.terminate();
       } else {
         c.alive = false;
-        c.ws.ping();
+        c.ws.ping(consol.log('Ping sent'));
       }
     });
   }, 10000);
