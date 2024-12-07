@@ -67,7 +67,7 @@ export function Recipes() {
         <main>
             <div className="page-content">
                 <div className="recipe-header page-box">
-                    <p>Recipes Made: {recipesMade.score}</p>
+                    {/* <p>Recipes Made: {recipesMade.score}</p> */}
                     <div className='quote-box'>
                         <p className='quote'>{quote}</p>
                         <p className='author'>{quoteAuthor}</p>
