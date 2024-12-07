@@ -43,3 +43,7 @@ https://github.com/colbyj427/CS260-startup/blob/main/notes.md
 ## React Deliverable
     Added authentication so personal pages only show up after user logs in.
     Put all html on same page to be rendered when user clicks a new page.
+
+## Websocket Deliverable.
+    Added a chat component that uses websocket to send  messages to all users on the chat.
+    Needed to send the message updates to the frontend but the websocket functionality and port all comes from the back.
