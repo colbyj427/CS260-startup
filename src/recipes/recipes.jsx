@@ -78,9 +78,9 @@ export function Recipes() {
                     <h3>Spaghetti</h3>
                     <p>Description of Recipe 1.</p>
                     Make
-                    <Button variant="primary" onClick={buttonpress}>
+                    {/* <Button variant="primary" onClick={buttonpress}>
                         Finished recipe (uses websocket to update others)
-                    </Button>
+                    </Button> */}
                 </div>
                 <div className="recipe-box page-box">
                     <h3>Chicken Korma</h3>
