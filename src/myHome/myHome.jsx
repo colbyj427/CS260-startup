@@ -58,7 +58,7 @@ export function MyHome() {
                 <a href="recipes.html">Recipes</a>
                 <p>This will pull recipes from the database</p>
                 <ul>
-                    <li>Spaghetti Bolognese</li>
+                    <li>Spaghetti</li>
                     <li>Lasagna</li>
                     <li>French Fries</li>
                 </ul>
