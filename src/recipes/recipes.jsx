@@ -85,9 +85,9 @@ export function Recipes() {
                 <div className="recipe-box page-box">
                     <h3>Chicken Korma</h3>
                     <p>Description of Recipe 2.</p>
-                    <Button variant="primary" onClick={buttonpress}>
+                    {/* <Button variant="primary" onClick={buttonpress}>
                         Finished recipe (uses websocket to update others)
-                    </Button>
+                    </Button> */}
                 </div>
                 <div className="web-socket-box page-box">
                     <p>Box for alerts where websocket will show immediate updates.</p>
