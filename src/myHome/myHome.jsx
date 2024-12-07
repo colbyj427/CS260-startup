@@ -45,7 +45,7 @@ export function MyHome() {
         <div class="home-boxes">
             <div class="home-pantry home-box">
                 <a href="pantry.html">Pantry</a>
-                <p>This will pull pantry data from the database</p>
+                <p>Add food items to your pantry to see what you have available!</p>
                 <ul>
                     {pantryItems.map((item, index) => (
                         <li key={index}>
@@ -56,7 +56,7 @@ export function MyHome() {
             </div>
             <div class="home-recipes home-box">
                 <a href="recipes.html">Recipes</a>
-                <p>This will pull recipes from the database</p>
+                <p>View the delicious recipes you can choose from!</p>
                 <ul>
                     <li>Spaghetti</li>
                     <li>Lasagna</li>
@@ -65,7 +65,7 @@ export function MyHome() {
             </div>
             <div class="home-shopping-list home-box">
                 <a href="shoppingList.html">Shopping List</a>
-                <p>This will pull shopping data from the database</p>
+                <p>Add items to your shopping list that you don't have yet!</p>
                     <ul>
                     {shoppingListItems.map((item, index) => (
                         <li key={index}>
