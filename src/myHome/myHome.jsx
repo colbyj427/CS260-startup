@@ -61,24 +61,6 @@ export function MyHome() {
                     <li>Spaghetti Bolognese</li>
                     <li>Lasagna</li>
                     <li>French Fries</li>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
                 </ul>
             </div>
             <div class="home-shopping-list home-box">
