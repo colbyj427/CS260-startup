@@ -90,10 +90,10 @@ export function Recipes() {
                 </div>
                 {/* <div className="web-socket-box page-box">
                     <p>Box for alerts where websocket will show immediate updates.</p>
-                    {/* <p>{createMessageArray()}</p> */}
-                    <p>{testData}</p>
-                </div> */}
-            </div>
+                    <p>{createMessageArray()}</p>
+                    <p>{testData}</p> 
+                </div>  */}
+            </div> 
         </main>
     );
 }
