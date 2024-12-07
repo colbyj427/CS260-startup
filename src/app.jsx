@@ -12,6 +12,7 @@ import { CreateAccount } from './createAccount/createAccount';
 import { AuthState } from './login/authState'; // Assuming you have an AuthState file
 import { Unauthenticated } from './login/unauthenticated';
 import { Authenticated } from './login/authenticated';
+import { Chat } from './chat/chat';
 
 export default function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -54,9 +55,15 @@ export default function App() {
                                 <NavLink className='nav-link' to='shoppingList'>Shopping List</NavLink>
                             </li>
                             )}
+                            {authState === AuthState.Authenticated && (
+                            <li className="nav-item">
+                                <NavLink className='nav-link' to='chat'>Chat</NavLink>
+                            </li>
+                            )}
                             <li className="nav-item">
                                 <NavLink className='nav-link' to=''>Log in</NavLink>
                             </li>
+
                             {/* <li className="nav-item">
                                 <NavLink className='nav-link' to='createAccount'>Create Account</NavLink>
                             </li> */}
@@ -81,6 +88,7 @@ export default function App() {
             <Route path='/pantry' element={<Pantry />} />
             <Route path='/shoppingList' element={<ShoppingList />} />
             <Route path='/recipes' element={<Recipes />} />
+            <Route path='/chat' element={<Chat/>} />
             <Route path='/createAccount' element={<CreateAccount />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
