@@ -116,7 +116,7 @@ export function Chat() {
       </div>
 
       <div className="status">
-        <p>WebSocket Status: {isConnected ? 'Connected' : 'Disconnected'}</p>
+        <p>Status: {isConnected ? 'Connected' : 'Disconnected'}</p>
       </div>
     </main>
   );
