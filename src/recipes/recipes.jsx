@@ -77,7 +77,6 @@ export function Recipes() {
                 <div className="recipe-box page-box">
                     <h3>Spaghetti</h3>
                     <p>Description of Recipe 1.</p>
-                    Make
                     {/* <Button variant="primary" onClick={buttonpress}>
                         Finished recipe (uses websocket to update others)
                     </Button> */}
@@ -89,11 +88,11 @@ export function Recipes() {
                         Finished recipe (uses websocket to update others)
                     </Button> */}
                 </div>
-                <div className="web-socket-box page-box">
+                {/* <div className="web-socket-box page-box">
                     <p>Box for alerts where websocket will show immediate updates.</p>
                     {/* <p>{createMessageArray()}</p> */}
                     <p>{testData}</p>
-                </div>
+                </div> */}
             </div>
         </main>
     );
